@@ -6,6 +6,8 @@ const options = {
   },
 };
 
+export const moviesData = [];
+
 fetch(
   "https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=true&language=ko-KR&page=1&sort_by=popularity.desc",
   options
@@ -13,7 +15,15 @@ fetch(
   .then((res) => res.json())
   .then((res) =>
     res.results.forEach((e) => {
-      console.log(e);
+      const movie = {
+        id: e.id,
+        title: e.original_title,
+        overview: e.overview,
+        vote: e.vote_average,
+        poster: e.poster_path,
+      };
+      moviesData.push(movie);
+
       let poster_path = e.poster_path;
 
       const container = document.querySelector(".movie-card");
@@ -21,6 +31,7 @@ fetch(
       const section = document.createElement("section");
       section.className = "section";
       section.style.backgroundImage = `url(https://image.tmdb.org/t/p/w780${poster_path})`;
+      section.dataset.id = e.id;
 
       container.append(section);
     })
