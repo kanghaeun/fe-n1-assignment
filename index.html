@@ -4,8 +4,60 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <link rel="stylesheet" href="src/styles/reset.css" />
+    <link rel="stylesheet" href="src/styles/mainBanner.css" />
+
+    <style>
+      .movie-card {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 20px;
+        padding: 30px 0 30px 0;
+        background-color: gray;
+      }
+
+      .section {
+        background-color: white;
+        width: 300px;
+        height: 400px;
+        padding: 16px;
+        border-radius: 10px;
+      }
+    </style>
+
     <script type="module" src="/src/apis/fetchMovies.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const container = document.querySelector(".movie-card");
+
+        for (let i = 0; i < 20; i++) {
+          const section = document.createElement("section");
+          section.className = "section";
+          section.innerHTML = `
+            <p>영화 이름 ${i + 1}</p>
+            <p>간단한 소개</p>
+            <button>더 알아보기</button>
+     `;
+          container.append(section);
+        }
+      });
+    </script>
   </head>
 
-  <body></body>
+  <body>
+    <div class="main-banner">
+      <p class="subtitle">Once upon a time,</p>
+      <p class="title">D I S N E Y</p>
+      <p class="since">SUMMER 2025</p>
+
+      <input
+        class="searchInput"
+        type="search"
+        placeholder="검색어를 입력하세요"
+      />
+    </div>
+
+    <div class="movie-card"></div>
+  </body>
 </html>
