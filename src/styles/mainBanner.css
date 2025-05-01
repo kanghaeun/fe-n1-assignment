@@ -1,25 +1,17 @@
 .main-banner {
-  background-color: green;
-  height: 500px;
+  height: 947px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-}
-.subtitle {
-  color: white;
-  font-size: 30px;
-  font-weight: lighter;
-}
-.title {
-  color: #f3d081;
-  font-size: 100px;
-  font-weight: bold;
-  margin: 20px 0 20px 0;
+
+  background-image: url("/maze.jpg");
+  background-size: cover;
+  background-position: center;
 }
 .since {
   color: white;
-  font-size: 20px;
+  font-size: 30px;
   font-weight: lighter;
 }
 
