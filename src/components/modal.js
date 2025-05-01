@@ -33,6 +33,8 @@ export function modal() {
           <button onclick="closeModal()" class="close-btn">✕</button>
           <h2 class="modal-title">${movie.title}</h2>
           <p class="modal-vote">평점 ${roundedVote}</p>
+          <hr>
+          <p class='modal-summary'> 줄거리 </p>
           <p class="modal-overview">${movie.overview}</p>
         </div>
       `;
