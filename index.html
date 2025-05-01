@@ -38,6 +38,15 @@
       document.addEventListener("DOMContentLoaded", () => {
         const movieCardContainer = document.querySelector(".movie-card");
         const modal = document.querySelector(".modal");
+        const overlay = document.querySelector(".overlay");
+
+        window.closeModal = function () {
+          modal.style.display = "none";
+          overlay.style.display = "none";
+          document.body.style.overflow = "auto";
+        };
+
+        overlay.addEventListener("click", window.closeModal);
 
         movieCardContainer.addEventListener("click", (event) => {
           const section = event.target.closest(".section");
@@ -62,6 +71,9 @@
             `;
 
             modal.style.display = "flex";
+            overlay.style.display = "block";
+
+            document.body.style.overflow = "hidden";
           }
         }
       });
@@ -79,6 +91,7 @@
     </div>
 
     <div class="movie-card"></div>
+    <div class="overlay"></div>
     <div class="modal"></div>
   </body>
 </html>
