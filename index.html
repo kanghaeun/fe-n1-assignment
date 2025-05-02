@@ -4,6 +4,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <script
+      src="https://kit.fontawesome.com/17a85d028c.js"
+      crossorigin="anonymous"
+    ></script>
     <link rel="stylesheet" href="src/styles/reset.css" />
     <link rel="stylesheet" href="src/styles/mainBanner.css" />
     <link rel="stylesheet" href="src/styles/modal.css" />
@@ -42,6 +46,7 @@
 
     <script type="module">
       document.addEventListener("DOMContentLoaded", () => {
+        const searchIcon = document.querySelector(".search-icon");
         const searchInput = document.querySelector(".searchInput");
         const movieCardContainer = document.querySelector(".movie-card");
 
@@ -70,6 +75,11 @@
             })
             .catch((err) => console.error(err));
         };
+
+        searchIcon.addEventListener("click", () => {
+          const query = searchInput.value.trim();
+          if (query) searchMovies(query);
+        });
       });
     </script>
   </head>
@@ -77,11 +87,16 @@
   <body>
     <div class="main-banner">
       <p class="since">SUMMER 2025</p>
-      <input
-        class="searchInput"
-        type="search"
-        placeholder="검색어를 입력하세요"
-      />
+      <div class="search-container">
+        <input
+          class="searchInput"
+          type="search"
+          placeholder="검색어를 입력하세요"
+        />
+        <span style="color: white">
+          <i class="search-icon fa-solid fa-magnifying-glass"></i>
+        </span>
+      </div>
     </div>
 
     <div class="movie-card"></div>

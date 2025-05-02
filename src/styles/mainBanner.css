@@ -15,9 +15,13 @@
   font-weight: lighter;
 }
 
+.search-container {
+  position: relative;
+  display: inline-block;
+}
 .searchInput {
-  margin-top: 20px;
-  height: 45px;
+  padding-right: 36px;
+  height: 40px;
   width: 700px;
   border-radius: 30px;
   border: 1px solid white;
@@ -27,4 +31,12 @@
 input::placeholder {
   color: white;
   font-weight: lighter;
+}
+
+.search-icon {
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
 }
