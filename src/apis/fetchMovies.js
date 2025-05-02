@@ -8,13 +8,16 @@ const options = {
 
 export const moviesData = [];
 
-fetch(
-  "https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=true&language=ko-KR&page=1&sort_by=popularity.desc",
-  options
-)
-  .then((res) => res.json())
-  .then((res) =>
-    res.results.forEach((e) => {
+async function fetchMovies() {
+  try {
+    const response = await fetch(
+      "https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=true&language=ko-KR&page=1&sort_by=popularity.desc",
+      options
+    );
+
+    const data = await response.json();
+
+    data.results.forEach((e) => {
       const movie = {
         id: e.id,
         title: e.original_title,
@@ -34,6 +37,10 @@ fetch(
       section.dataset.id = e.id;
 
       container.append(section);
-    })
-  )
-  .catch((err) => console.error(err));
+    });
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+fetchMovies();

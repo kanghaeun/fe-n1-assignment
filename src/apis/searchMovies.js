@@ -11,23 +11,26 @@ export function fetchSearchMovies() {
     },
   };
 
-  const searchMovies = (query) => {
-    const url = `https://api.themoviedb.org/3/search/movie?query=${encodeURIComponent(
-      query
-    )}&include_adult=false&language=ko&page=1`;
-    fetch(url, options)
-      .then((res) => res.json())
-      .then((res) => {
-        movieCardContainer.innerHTML = "";
-        res.results.forEach((movie) => {
-          const div = document.createElement("div");
-          div.className = "section";
-          div.dataset.id = movie.id;
-          div.style.backgroundImage = `url(https://image.tmdb.org/t/p/w500${movie.poster_path})`;
-          movieCardContainer.append(div);
-        });
-      })
-      .catch((err) => console.error(err));
+  const searchMovies = async (query) => {
+    try {
+      const url = `https://api.themoviedb.org/3/search/movie?query=${encodeURIComponent(
+        query
+      )}&include_adult=false&language=ko&page=1`;
+
+      const response = await fetch(url, options);
+      const data = await response.json();
+
+      movieCardContainer.innerHTML = "";
+      data.results.forEach((movie) => {
+        const div = document.createElement("div");
+        div.className = "section";
+        div.dataset.id = movie.id;
+        div.style.backgroundImage = `url(https://image.tmdb.org/t/p/w500${movie.poster_path})`;
+        movieCardContainer.append(div);
+      });
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   searchInput.addEventListener("keydown", (e) => {
