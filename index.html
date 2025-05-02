@@ -45,7 +45,11 @@
     </script>
 
     <script type="module">
+      import { modal } from "/src/components/modal.js";
+
       document.addEventListener("DOMContentLoaded", () => {
+        modal();
+
         const searchIcon = document.querySelector(".search-icon");
         const searchInput = document.querySelector(".searchInput");
         const movieCardContainer = document.querySelector(".movie-card");
@@ -69,6 +73,7 @@
               res.results.forEach((movie) => {
                 const div = document.createElement("div");
                 div.className = "section";
+                div.dataset.id = movie.id;
                 div.style.backgroundImage = `url(https://image.tmdb.org/t/p/w500${movie.poster_path})`;
                 movieCardContainer.append(div);
               });
