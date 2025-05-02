@@ -9,6 +9,7 @@
   background-size: cover;
   background-position: center;
 }
+
 .since {
   color: white;
   font-size: 30px;
@@ -18,16 +19,20 @@
 .search-container {
   position: relative;
   display: inline-block;
+  width: calc(100% - 60px);
+  max-width: 700px;
 }
+
 .searchInput {
   padding-right: 36px;
   height: 40px;
-  width: 700px;
+  width: 100%;
   border-radius: 30px;
   border: 1px solid white;
   background-color: transparent;
   padding-left: 20px;
 }
+
 input::placeholder {
   color: white;
   font-weight: lighter;
@@ -39,4 +44,23 @@ input::placeholder {
   top: 50%;
   transform: translateY(-50%);
   cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .since {
+    font-size: 24px;
+  }
+}
+
+@media (max-width: 480px) {
+  .searchInput {
+    height: 36px;
+    padding-left: 15px;
+  }
+  .search-icon {
+    right: 15px;
+  }
+  .since {
+    font-size: 20px;
+  }
 }
