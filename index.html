@@ -76,6 +76,13 @@
             .catch((err) => console.error(err));
         };
 
+        searchInput.addEventListener("keydown", (e) => {
+          if (e.key === "Enter") {
+            const query = e.target.value.trim();
+            if (query) searchMovies(query);
+          }
+        });
+
         searchIcon.addEventListener("click", () => {
           const query = searchInput.value.trim();
           if (query) searchMovies(query);
