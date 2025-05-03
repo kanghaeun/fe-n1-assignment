@@ -5,13 +5,19 @@ export function modal() {
   const modal = document.querySelector(".modal");
   const overlay = document.querySelector(".overlay");
 
-  window.closeModal = function () {
+  function closeModal() {
     modal.style.display = "none";
     overlay.style.display = "none";
     document.body.style.overflow = "auto";
-  };
+  }
 
-  overlay.addEventListener("click", window.closeModal);
+  modal.addEventListener("click", (event) => {
+    if (event.target.classList.contains("close-btn")) {
+      closeModal();
+    }
+  });
+
+  overlay.addEventListener("click", closeModal);
 
   movieCardContainer.addEventListener("click", (event) => {
     const section = event.target.closest(".section");
@@ -30,7 +36,7 @@ export function modal() {
       modal.innerHTML = `
         <img src="https://image.tmdb.org/t/p/w500${movie.poster}" class="modal-img">
         <div class="modal-content">
-          <button onclick="closeModal()" class="close-btn">✕</button>
+          <button class="close-btn">✕</button>
           <h2 class="modal-title">${movie.title}</h2>
           <p class="modal-vote">평점 ${roundedVote}</p>
           <hr>
