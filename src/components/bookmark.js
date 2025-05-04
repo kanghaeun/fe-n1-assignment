@@ -61,3 +61,7 @@ function updateBookmarkUI() {
     });
   });
 }
+
+export function fetchBookmark() {
+  updateBookmarkUI();
+}
