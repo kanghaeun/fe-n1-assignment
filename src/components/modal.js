@@ -32,11 +32,18 @@ export function modal() {
 
     if (movie) {
       const roundedVote = Math.round(movie.vote * 10) / 10;
+      const bookmarkStatus = isBookmarked(movieId) ? "bookmarked" : "";
+      const bookmarkIcon = isBookmarked(movieId)
+        ? "fas fa-bookmark"
+        : "far fa-bookmark";
 
       modal.innerHTML = `
         <img src="https://image.tmdb.org/t/p/w500${movie.poster}" class="modal-img">
         <div class="modal-content">
           <button class="close-btn">✕</button>
+          <button class="bookmark-btn ${bookmarkStatus}" >
+            <i class="${bookmarkIcon}"></i>
+          </button>
           <h2 class="modal-title">${movie.title}</h2>
           <p class="modal-vote">평점 ${roundedVote}</p>
           <hr>
