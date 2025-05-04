@@ -59,10 +59,12 @@
     <script type="module">
       import { modal } from "/src/components/modal.js";
       import { fetchSearchMovies } from "/src/apis/searchMovies.js";
+      import { fetchBookmark } from "/src/components/bookmark.js";
 
       document.addEventListener("DOMContentLoaded", () => {
         modal();
         fetchSearchMovies();
+        fetchBookmark();
       });
     </script>
   </head>

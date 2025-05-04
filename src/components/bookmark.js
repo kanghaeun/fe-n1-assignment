@@ -1,7 +1,7 @@
 let bookmarks = JSON.parse(localStorage.getItem("movieBookmarks")) || [];
 
 export function isBookmarked(movieId) {
-  return bookmarks.some((item) => item.id === movieId);
+  return bookmarks.some((item) => item.id === Number(movieId));
 }
 
 function saveBookmarks() {
@@ -9,6 +9,8 @@ function saveBookmarks() {
 }
 
 export function switchBookmark(movieId, movieData) {
+  movieId = Number(movieId);
+
   const index = bookmarks.findIndex((item) => item.id === movieId);
 
   if (index === -1) {
@@ -55,13 +57,42 @@ function updateBookmarkUI() {
   const removeButtons = bookmarkContainer.querySelectorAll(".remove-bookmark");
   removeButtons.forEach((btn) => {
     btn.addEventListener("click", (e) => {
+      e.stopPropagation();
       const movieId = btn.dataset.id;
       const movieData = bookmarks.find((item) => item.id === Number(movieId));
       switchBookmark(movieId, movieData);
     });
   });
-}
 
+  const bookmarkItems = bookmarkContainer.querySelectorAll(".bookmark-item");
+  bookmarkItems.forEach((item) => {
+    item.addEventListener("click", () => {
+      const event = new CustomEvent("openBookmarkedMovie", {
+        detail: { movieId: item.dataset.id },
+      });
+      document.dispatchEvent(event);
+    });
+  });
+}
+export function getBookmarks() {
+  return bookmarks;
+}
 export function fetchBookmark() {
   updateBookmarkUI();
+  document.addEventListener("openBookmarkedMovie", (e) => {
+    const movieId = e.detail.movieId;
+    const movieSection = document.querySelector(
+      `.section[data-id="${movieId}"]`
+    );
+
+    if (movieSection) {
+      movieSection.click();
+    } else {
+      document.dispatchEvent(
+        new CustomEvent("openMovieModal", {
+          detail: { movieId },
+        })
+      );
+    }
+  });
 }
