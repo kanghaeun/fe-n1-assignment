@@ -51,4 +51,13 @@ function updateBookmarkUI() {
 
     bookmarkContainer.append(bookmarkItem);
   });
+
+  const removeButtons = bookmarkContainer.querySelectorAll(".remove-bookmark");
+  removeButtons.forEach((btn) => {
+    btn.addEventListener("click", (e) => {
+      const movieId = btn.dataset.id;
+      const movieData = bookmarks.find((item) => item.id === Number(movieId));
+      switchBookmark(movieId, movieData);
+    });
+  });
 }
