@@ -8,53 +8,12 @@
       src="https://kit.fontawesome.com/17a85d028c.js"
       crossorigin="anonymous"
     ></script>
+
+    <link rel="stylesheet" href="src/styles/movieCard.css" />
     <link rel="stylesheet" href="src/styles/reset.css" />
     <link rel="stylesheet" href="src/styles/mainBanner.css" />
     <link rel="stylesheet" href="src/styles/modal.css" />
     <link rel="stylesheet" href="src/styles/bookmark.css" />
-
-    <style>
-      .movie-card {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 40px;
-        padding: 30px 0 30px 0;
-        background-color: #1c3825;
-      }
-
-      .section {
-        width: 300px;
-        height: 400px;
-        padding: 16px;
-        border-radius: 10px;
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-end;
-        background-size: cover;
-        background-position: center;
-        cursor: pointer;
-      }
-
-      @media (max-width: 1200px) {
-        .section {
-          width: calc(33.33% - 30px);
-        }
-      }
-
-      @media (max-width: 900px) {
-        .section {
-          width: calc(50% - 20px);
-        }
-      }
-
-      @media (max-width: 600px) {
-        .section {
-          width: calc(100% - 40px);
-          max-width: 350px;
-        }
-      }
-    </style>
 
     <script type="module">
       import { modal } from "/src/components/modal.js";
