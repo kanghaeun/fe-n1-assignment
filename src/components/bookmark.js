@@ -13,7 +13,7 @@ export function switchBookmark(movieId, movieData) {
 
   const index = bookmarks.findIndex((item) => item.id === movieId);
 
-  if (index === -1) {
+  if (index === -1 && movieData) {
     bookmarks.push({
       id: movieId,
       title: movieData.title,
