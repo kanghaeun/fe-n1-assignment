@@ -55,6 +55,17 @@ export function modal() {
       modal.style.display = "flex";
       overlay.style.display = "block";
       document.body.style.overflow = "hidden";
+
+      const bookmarkBtn = document.querySelector(".bookmark-btn");
+      bookmarkBtn.addEventListener("click", () => {
+        if (isBookmarked(movieId)) {
+          bookmarkBtn.classList.add("bookmarked");
+          bookmarkBtn.innerHTML = '<i class="fas fa-bookmark"></i>';
+        } else {
+          bookmarkBtn.classList.remove("bookmarked");
+          bookmarkBtn.innerHTML = '<i class="far fa-bookmark"></i>';
+        }
+      });
     }
   }
 }
