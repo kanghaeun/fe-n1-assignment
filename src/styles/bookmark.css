@@ -1,3 +1,70 @@
+.bookmark-section {
+  background-color: #1c3825;
+  padding: 20px;
+  color: white;
+}
+
+.bookmark-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.toggle-bookmark-btn {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.bookmark-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+}
+
+.bookmark-container.hidden {
+  max-height: 0;
+  padding: 0;
+  margin: 0;
+}
+
+.bookmark-item {
+  width: 150px;
+  border-radius: 8px;
+  overflow: hidden;
+  background-color: #15291e;
+  position: relative;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.bookmark-item img {
+  width: 100%;
+  height: 225px;
+  object-fit: cover;
+}
+
+.remove-bookmark {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: rgba(0, 0, 0, 0.6);
+  border: none;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
 .no-bookmarks {
   width: 100%;
   text-align: center;
@@ -24,4 +91,22 @@
 
 .bookmark-btn.bookmarked {
   color: #ffde59;
+}
+
+@media (max-width: 900px) {
+  .bookmark-item {
+    width: calc(33.33% - 14px);
+  }
+}
+
+@media (max-width: 600px) {
+  .bookmark-item {
+    width: calc(50% - 10px);
+  }
+}
+
+@media (max-width: 480px) {
+  .bookmark-item {
+    width: 100%;
+  }
 }
