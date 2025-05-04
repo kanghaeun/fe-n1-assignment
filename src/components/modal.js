@@ -1,4 +1,5 @@
 import { moviesData } from "/src/apis/fetchMovies.js";
+import { switchBookmark, isBookmarked } from "/src/components/bookMark.js";
 
 export function modal() {
   const movieCardContainer = document.querySelector(".movie-card");
@@ -58,6 +59,8 @@ export function modal() {
 
       const bookmarkBtn = document.querySelector(".bookmark-btn");
       bookmarkBtn.addEventListener("click", () => {
+        switchBookmark(movieId, movie);
+
         if (isBookmarked(movieId)) {
           bookmarkBtn.classList.add("bookmarked");
           bookmarkBtn.innerHTML = '<i class="fas fa-bookmark"></i>';
