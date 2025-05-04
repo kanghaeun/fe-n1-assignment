@@ -24,4 +24,31 @@ export function switchBookmark(movieId, movieData) {
   }
 
   saveBookmarks();
+
+  updateBookmarkUI();
+}
+
+function updateBookmarkUI() {
+  const bookmarkContainer = document.querySelector(".bookmark-container");
+  bookmarkContainer.innerHTML = "";
+
+  if (bookmarks.length === 0) {
+    bookmarkContainer.innerHTML =
+      '<p class="no-bookmarks">북마크한 영화가 없습니다.</p>';
+  }
+
+  bookmarks.forEach((movie) => {
+    const bookmarkItem = document.createElement("div");
+    bookmarkItem.className = "bookmark-item";
+    bookmarkItem.dataset.id = movie.id;
+
+    bookmarkItem.innerHTML = `
+      <img src="https://image.tmdb.org/t/p/w200${movie.poster}" alt="${movie.title}">
+      <button class="remove-bookmark" data-id="${movie.id}">
+        <i class="fas fa-times"></i>
+      </button>
+    `;
+
+    bookmarkContainer.append(bookmarkItem);
+  });
 }
